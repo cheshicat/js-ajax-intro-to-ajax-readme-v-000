@@ -20,3 +20,11 @@ function getRepositories() {
   req.open('GET', 'https://api.github.com/users/cheshicat/repos');
   req.send();
 }
+
+function getCommits(el) {
+  const name = el.dataset.repo;
+  const req = new XMLHttpRequest();
+  req.addEventListener('load', showCommits);
+  req.open('GET', 'https://api.github.com/repos/cheshicat/' + name + '/commits');
+  req.send();
+}
